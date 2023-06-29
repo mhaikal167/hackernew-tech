@@ -13,7 +13,10 @@ export default function Comments() {
       getItem(cmtId).then((data) => data && setCommentStories(data));
     }, []);
     return commentStories ? (
-      <div className=" border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div
+        className=" border border-b-1 border-gray-300 flex gap-3 mb-5" 
+        style={{ padding: "10px" }}
+      >
         <div className="w-full">
           <div className="flex gap-3">
             <a
@@ -26,15 +29,14 @@ export default function Comments() {
             </a>
           </div>
           <div className="flex gap-3 mb-4">
-            <p className="text-gray-300">
-              by : <span className="hover:underline cursor-pointer">{commentStories.by}</span>
+            <p className="text-gray-400">
+              by : <span>{commentStories.by}</span>
             </p>
             <p>{calculateTime(commentStories.time)} ago </p>
-           
           </div>
-          <div style={{padding:"10px"}}>
+          <div style={{ padding: "10px" }}>
             {parse(`${commentStories.text}`)}
-            </div>
+          </div>
         </div>
       </div>
     ) : null;
@@ -47,14 +49,13 @@ export default function Comments() {
       getItem(id).then((data) => setCommentId(data.kids));
     }, []);
     console.log(commentId, "ini commentsd");
-    return commentId.map((cmtId, idx) => (
+    return commentId ? commentId?.map((cmtId, idx) => (
       <Comment key={cmtId} cmtId={cmtId} no={idx} />
-    ));
+    )) : <h1 className="mt-4"> no comments ...</h1>;
   };
   return (
-    <>
-      <h1>Comments</h1>
+    <div className="p-4">
       <CommentList />
-    </>
+    </div>
   );
 }

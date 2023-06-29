@@ -15,14 +15,14 @@ export default function Home() {
     }, []);
 
     return story && story.url ? (
-      <div className=" border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400 flex gap-3" style={{padding:"10px"}}>
         <p>{no + 1}.</p>
-        <div className="w-full">
+        <div className="w-full text-gray-500">
           <div className="flex gap-3">
             <a
               href={story.url}
               target="_blank"
-              className="hover:underline"
+              className="hover:underline text-black"
               rel="noreferrer"
             >
               {story.title}
@@ -32,11 +32,11 @@ export default function Home() {
             <p> {story.score} point </p>
             <p>
               by :
-              <span className="hover:underline cursor-pointer"> {story.by}</span>
+              <span > {story.by}</span>
             </p>
             <p>{calculateTime(story.time)} ago </p>
             <Link to={`/comments/${story.id}`}>
-            <p> comments : {story.descendants}</p>
+            <p className="hover:underline cursor-pointer"> comments : {story.descendants}</p>
             </Link>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <>
       <StoryList />
-      <div className=" border border-b-1 border-black" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400" style={{padding:"10px"}}>
         <button onClick={handleMore}>more ....</button>
       </div>
     </>

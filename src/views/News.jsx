@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MAX_STORIES, STORY_LIMIT } from "../config/constants";
 import { calculateTime } from "../config/func/calculateTime";
 import { getItem, getNewIds } from "../config/func/getStory";
+import { Link } from "react-router-dom";
 
 export default function NewStories() {
   const News = ({ newId, no }) => {
@@ -14,14 +15,14 @@ export default function NewStories() {
     }, []);
 
     return news && news.url ? (
-      <div className=" px-4 py-2 border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div className=" px-4 py-2 border border-b-1 border-gray-400flex gap-3" style={{padding:"10px"}}>
         <p>{no + 1}.</p>
-        <div className="w-full">
+        <div className="w-full text-gray-500">
           <div className="flex gap-3">
             <a
               href={news.url}
               target="_blank"
-              className="hover:underline"
+              className="hover:underline text-black"
               rel="noreferrer"
             >
               {news.title}
@@ -29,12 +30,14 @@ export default function NewStories() {
           </div>
           <div className="flex gap-3">
             <p> {news.score} point </p>
-            <p>
+            <p >
               by :
-              <span className="hover:underline cursor-pointer">{news.by}</span>
+              <span className="text-gray-500 font-normal"> {news.by}</span>
             </p>
-            <p>{calculateTime(news.time)} ago </p>
-            <p> comments : {news.descendants}</p>
+            <p className="text-gray-500 ">{calculateTime(news.time)} ago </p>
+            <Link to={`/comments/${news.id}`}>
+            <p className="hover:underline"> comments : {news.descendants}</p>
+            </Link>
           </div>
         </div>
       </div>
@@ -68,7 +71,7 @@ export default function NewStories() {
   return (
     <>
       <NewsList />
-      <div className=" border border-b-1 border-black" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400" style={{padding:"10px"}}>
         <button onClick={handleMore}>more ....</button>
       </div>
     </>

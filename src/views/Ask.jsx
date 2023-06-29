@@ -17,21 +17,21 @@ export default function AskStories() {
     console.log(news, "ini nes");
 
     return news ? (
-      <div className=" px-4 py-2 border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div className=" px-4 py-2 border border-b-1 border-gray-400flex gap-3" style={{padding:"10px"}}>
         <p>{no + 1}.</p>
-        <div className="w-full">
+        <div className="w-full text-gray-500">
           <div className="flex gap-3">
-            <p>{news.title}</p>
+            <p className="text-black">{news.title}</p>
           </div>
           <div className="flex gap-3">
             <p> {news.score} point </p>
             <p>
               by :
-              <span className="hover:underline cursor-pointer"> {news.by}</span>
+              <span> {news.by}</span>
             </p>
             <p>{calculateTime(news.time)} ago </p>
             <Link to={`/comments/${news.id}`}>
-            <p> comments : {news.descendants}</p>
+            <p className="hover:underline cursor-pointer"> comments : {news.descendants}</p>
             </Link>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function AskStories() {
   return (
     <>
       <NewsList />
-      <div className=" border border-b-1 border-black" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400" style={{padding:"10px"}}>
         <button onClick={handleMore}>more ....</button>
       </div>
     </>

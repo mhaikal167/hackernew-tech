@@ -14,14 +14,14 @@ export default function JobStories() {
     }, []);
 
     return jobs && jobs.url ? (
-      <div className=" px-4 py-2 border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div className=" px-4 py-2 border border-b-1 border-gray-400 flex gap-3" style={{padding:"10px"}}>
         <p>{no + 1}.</p>
-        <div className="w-full">
+        <div className="w-full text-gray-500">
           <div className="flex gap-3">
             <a
               href={jobs.url}
               target="_blank"
-              className="hover:underline"
+              className="hover:underline text-black"
               rel="noreferrer"
             >
               {jobs.title}
@@ -31,7 +31,7 @@ export default function JobStories() {
             <p> {jobs.score} point </p>
             <p>
               by :
-              <span className="hover:underline cursor-pointer"> {jobs.by}</span>
+              <span> {jobs.by}</span>
             </p>
             <p>{calculateTime(jobs.time)} ago </p>
           
@@ -68,7 +68,7 @@ export default function JobStories() {
   return (
     <>
       <JobsList />
-      <div className=" border border-b-1 border-black" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400" style={{padding:"10px"}}>
         <button onClick={handleMore}>more ....</button>
       </div>
     </>

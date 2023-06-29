@@ -15,14 +15,14 @@ export default function BestStories() {
     }, []);
 
     return bestStories && bestStories.url ? (
-      <div className=" px-4 py-2 border border-b-1 border-black flex gap-3" style={{padding:"10px"}}>
+      <div className=" px-4 py-2 border border-b-1 border-gray-400 flex gap-3" style={{padding:"10px"}}>
         <p>{no + 1}.</p>
-        <div className="w-full">
+        <div className="w-full text-gray-500">
           <div className="flex gap-3">
             <a
               href={bestStories.url}
               target="_blank"
-              className="hover:underline"
+              className="hover:underline text-black"
               rel="noreferrer"
             >
               {bestStories.title}
@@ -71,7 +71,7 @@ export default function BestStories() {
   return (
     <>
       <BestList />
-      <div className=" border border-b-1 border-black" style={{padding:"10px"}}>
+      <div className=" border border-b-1 border-gray-400" style={{padding:"10px"}}>
         <button onClick={handleMore}>more ....</button>
       </div>
     </>
